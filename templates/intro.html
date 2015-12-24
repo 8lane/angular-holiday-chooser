@@ -1,0 +1,67 @@
+<!-- Sign up -->
+<section class="app__signup" ng-show="options.enableSignup">
+	<header class="header">
+		<h2 class="title">Details</h2>
+	</header>
+	<form name="holidayUser" ng-submit="submit()" ng-controller="holidayUser">
+		<label for="name">Enter your name</label>
+		<input type="text" id="name" ng-model="holiday.user.name" placeholder="Enter your name" />
+		<input type="submit" value="Confirm" ng-disabled="holiday.user.name.length < 2" />
+	</form>
+</section>
+
+
+<!-- Intro Steps -->
+<section id="snow" class="app__intro fadeOut" ng-controller="holidayIntro" ng-show="showIntro">
+	<div class="app__intro--step1 ng-hide fadeIn" ng-show="showIntroStep1">
+		<header class="app__intro__headline">
+			<h2>{{options.introTitle | filterTags:this}}</h2>
+			<p>{{options.introDesc1 | filterTags:this}}</p>
+			<button class="button" ng-click="nextStep(2)">Alright, let's begin</button>
+		</header>
+	</div>
+
+	<div class="app__intro--step2 fadeIn" ng-show="showIntroStep2">
+		<header class="app__intro__headline">
+			<p>{{options.introDesc2 | filterTags:this}}</p>
+			<button class="button" ng-click="finishIntro(2)">Ready?</button>
+		</header>
+	</div>
+
+</section>
+
+
+<!-- Holiday Choices -->
+<section class="app__choices" ng-show="holiday.showChoices">
+	<form name="holidayChoices" ng-controller="holidayChoices">
+		<ul class="columns">
+			<li class="app__choices__item column one-third" ng-repeat="choice in holiday.choices" fix-height>
+				<label style="background-image: url({{choice.coverImg}});" ng-click="openChoice($event)">
+					<div class="app__choices__item__info" ng-hide="showIntro">
+						<h3 ng-show="options.showChoiceInfo">{{choice.name}}</h3>
+						<small ng-show="options.showChoiceInfo">{{choice.desc}}</small>
+					</div>
+					<input type="radio" name="choice" ng-model="holiday.choiceModel" value="{{choice.name}}" class="sr-only" />
+				</label>
+			</li>
+		</ul>
+		<div class="app__choices__confirm fadeIn" ng-show="showConfirm">
+			<div class="app__choices__confirm__inner">
+				<h3>Are you sure?</h3>
+				<button class="button button--outline" ng-click="confirmChoice()">Yes</button> <button class="button button--outline" ng-click="hideConfirm()">No</button>
+			</div>
+		</div>
+	</form>
+</section>
+
+
+<!-- Chosen Holiday Summary -->
+<section class="app__summary" ng-controller="holidaySummary" style="background-image: url({{holiday.choices[holiday.choiceModel].coverImg}});" ng-show="holiday.user.chosen">
+	<div class="app__summary__msg">
+		<h3>{{holiday.choices[holiday.choiceModel].name}}</h3>
+		<p>{{holiday.choices[holiday.choiceModel].desc}}</p>
+		<p>You and {{options.appSender}} are officially travelling to <span>{{holiday.choices[holiday.choiceModel].name}}</span>!</p>
+		<p>Merry Christmas!</p>
+		<p>{{options.appSender}} xx</p>
+	</div>
+</section>

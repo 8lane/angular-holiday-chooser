@@ -1,0 +1,28 @@
+{
+	"options": {
+		"introTitle": "Dear {recipient}",
+		"introDesc1": "{sender} has invited you to take part in the following interactive website.",
+		"introDesc2": "{recipient}, you're now going to see some photographs. Please click on your favourite. You only have one chance.",
+		"showChoiceInfo": false,
+		"enableSignup": false,
+		"appRecipient": "Amy",
+		"appSender": "Tom"
+	},
+	"choices": {
+		"Prague": {
+			"name": "Prague",
+			"desc": "Prague is the equal of Paris in terms of beauty. Its history goes back a millennium.",
+			"coverImg": "assets/img/covers/prague.jpg"
+		},
+		"Chamonix": {
+			"name": "Chamonix",
+			"desc": "With the amazing Mont Blanc mountain as an awesome backdrop, the Chamonix Valley is the Alps at their most dramatic.",
+			"coverImg": "assets/img/covers/alps.jpg"
+		},
+		"Amsterdam": {
+			"name": "Amsterdam",
+			"desc": "Seventeenth-century buildings. Beautiful canals. Few cities meld history with modern urban flair like Amsterdam.",
+			"coverImg": "assets/img/covers/amsterdam.jpg"
+		}
+	}
+}
